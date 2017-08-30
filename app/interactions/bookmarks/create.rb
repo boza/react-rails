@@ -5,21 +5,22 @@ module Bookmarks
 
     URL_SCHEMES = ['http://', 'https://'].freeze
 
-    def self.run(bookmark_params)
-      interaction = new(bookmark_params)
+    def self.run(user, bookmark_params)
+      interaction = new(user, bookmark_params)
       interaction.send(:run)
     end
 
-    def initialize(bookmark_params)
+    def initialize(user, bookmark_params)
       @bookmark_params = bookmark_params
+      @user = user
     end
 
     private
 
-    attr_reader :bookmark_params
+    attr_reader :bookmark_params, :user
 
     def run
-      site.bookmarks.create!(bookmark_params)
+      site.bookmarks.create!(bookmark_params.merge(user: user))
     end
 
     def site

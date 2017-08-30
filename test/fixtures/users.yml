@@ -1,0 +1,6 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: one@test.com
+  encrypted_password: <%= BCrypt::Password.create("foobar", cost: 4) %>
+  remember_token: <%= Clearance::Token.new %>
