@@ -1,0 +1,39 @@
+version: '2'
+services:
+  db:
+    image: postgres:9.3-alpine
+    ports:
+      - "5444:5432"
+  redis:
+    image: redis:4.0-alpine
+  web:
+    build: .
+    volumes:
+      - .:/app/code
+      - ~/.ssh:/root/.ssh
+      - bundle-volume:/app/bundle
+      - node-volume:/app/code/node_modules
+  rails:
+    extends:
+      service: web
+    ports:
+      - "3000:3000"
+    command: bin/rails s
+    depends_on:
+      - db
+      - redis
+  webpack:
+    extends:
+      service: web
+    command: bin/webpack-dev-server
+    ports:
+      - "8080:8080"
+  spring:
+    extends:
+        service: web
+    command: bin/spring server
+    pid: host
+
+volumes:
+  bundle-volume:
+  node-volume:

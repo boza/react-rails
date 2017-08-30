@@ -1,24 +1,29 @@
-# README
+# CODE CHALLENGE README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Set up/Installation
+This tool uses Docker to bootstrap itself.
+In the past we tried to use Docker to also manage the app dependencies, but that's just too much of a pain.
+Instead, we've packaged up all the commands in a script. Run it like this:
 
-Things you may want to cover:
+```
+bin/dev_setup
+```
 
-* Ruby version
+As a reference, here's what it does:
+1. Set up app dependencies (Ruby, Node, Postgres, etc.):
+```docker-compose build```
+2. Bundle
+```docker-compose run rails bundle```
+3. Install Yarn Packages
+```docker-compose run webpack yarn```
+4. Migrate
+```docker-compose run rails bin/rake db:migrate```
 
-* System dependencies
+## Running
+Start the required services by running:
 
-* Configuration
+```
+docker-compose up
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You want to leave it running at all times so that spring is preloaded when invoking `docker-compose run`
