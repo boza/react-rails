@@ -1,7 +1,9 @@
 # CODE CHALLENGE README
 
 ## Set up/Installation
-This tool uses Docker to bootstrap itself.
+This tool uses Docker to bootstrap itself. If you don't have docker installed you can download it from here:
+https://store.docker.com/search?offering=community&type=edition
+
 In the past we tried to use Docker to also manage the app dependencies, but that's just too much of a pain.
 Instead, we've packaged up all the commands in a script. Run it like this:
 
