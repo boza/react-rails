@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+touch ~/.gitconfig # In case it's not there, otherwise problems pop up.
+
+echo "Building Docker containers..." ; sleep 3 ; docker-compose build
+echo "Bundling..." ; sleep 3; docker-compose run rails bundle
+echo "Building node packages..." ; sleep 3 ; docker-compose run webpack yarn
+echo "Creating DBs..." ; sleep 3 ; docker-compose run rails bin/rails db:create
+echo "Migrating DBs..." ; sleep 3 ; docker-compose run rails bin/rake mig
