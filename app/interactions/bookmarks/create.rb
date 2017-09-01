@@ -3,28 +3,27 @@ require 'uri'
 module Bookmarks
   class Create
 
-    URL_SCHEMES = ['http://', 'https://'].freeze
-
-    def self.run(user, bookmark_params)
-      interaction = new(user, bookmark_params)
+    def self.run(user, params:)
+      interaction = new(user, params)
       interaction.send(:run)
     end
 
-    def initialize(user, bookmark_params)
-      @bookmark_params = bookmark_params
+    def initialize(user, params)
+      @params = params
       @user = user
     end
 
     private
 
-    attr_reader :bookmark_params, :user
+    attr_reader :params, :user
 
     def run
-      site.bookmarks.create!(bookmark_params.merge(user: user))
+      site.bookmarks.create!(params.merge(user: user))
     end
 
     def site
-      Sites::FindOrCreate.run(bookmark_params[:url])
+      @site ||= Sites::FindOrCreate.run(params[:url])
     end
+
   end
 end

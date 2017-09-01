@@ -15,14 +15,17 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    @bookmark = Bookmarks::Create.run(current_user, bookmark_params)
+    @bookmark = Bookmarks::Create.run(current_user, params: bookmark_params)
     respond_to do |format|
       format.json { render json: @bookmark }
     end
   end
 
   def update
-
+    @bookmark = Bookmarks::Update.run(current_user, id: params[:id], params: bookmark_params)
+    respond_to do |format|
+      format.json { render json: @bookmark }
+    end
   end
 
   private
