@@ -16,6 +16,9 @@ const validate = (values) => {
   if (!values.url) {
     errors.url = "Please enter an url"
   }
+  if (values.url && !/^http(s)?:\/\//.test(values.url)) {
+    errors.url = "Make sure the url start with http or https"
+  }
   return errors
 }
 
