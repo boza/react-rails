@@ -32,10 +32,12 @@ const App = ({ store, ...props }) => (
 )
 
 const container = document.getElementById('app');
-
-render(
-  <Provider store={ store } key="store">
-    <App store={store} isLoggedIn={container.getAttribute('data-is-logged-in') === 'true'} />
-  </Provider>,
-  container
-)
+const isLoggedIn = container && container.getAttribute('data-is-logged-in') === 'true'
+if (container) {
+  render(
+    <Provider store={ store } key="store">
+      <App store={store} isLoggedIn={isLoggedIn} />
+    </Provider>,
+    container
+  )
+}
