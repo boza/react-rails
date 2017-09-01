@@ -35,6 +35,7 @@
     "react-redux": "^5.0.6",
     "reactstrap": "^4.8.0",
     "redux": "^3.7.2",
+    "redux-form": "^7.0.3",
     "resolve-url-loader": "^2.1.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",

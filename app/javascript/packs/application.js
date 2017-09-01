@@ -14,20 +14,28 @@ import { Provider } from 'react-redux';
 
 import Page from './components/page';
 
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
+
+import { reducer as formReducer } from 'redux-form'
+
+const rootReducer = combineReducers({
+  form: formReducer
+})
 
 const store = createStore(
-  ()=>{},
+  rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+)
 
 const App = ({ store, ...props }) => (
   <Page {...{ props }} />
 )
 
+const container = document.getElementById('app');
+
 render(
   <Provider store={ store } key="store">
-    <App store={store} />
+    <App store={store} isLoggedIn={container.getAttribute('data-is-logged-in') === 'true'} />
   </Provider>,
-  document.getElementById('app')
+  container
 )
