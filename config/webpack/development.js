@@ -24,9 +24,9 @@ module.exports = merge(sharedConfig, {
     publicPath: output.publicPath,
     compress: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
-    historyApiFallback: true,
-    watchOptions: {
-      ignored: /node_modules/
-    }
+    historyApiFallback: true
+    // watchOptions: {
+    //   ignored: /node_modules/
+    // }
   }
 })

@@ -18,7 +18,7 @@ services:
       service: web
     ports:
       - "3000:3000"
-    command: bin/rails s
+    command: bin/start_rails
     depends_on:
       - db
       - redis

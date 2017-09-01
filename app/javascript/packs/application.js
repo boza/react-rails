@@ -6,5 +6,28 @@
 //
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
+import 'bootstrap/dist/css/bootstrap.css';
 
-console.log('Hello World from Webpacker')
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+
+import Page from './components/page';
+
+import { createStore } from 'redux'
+
+const store = createStore(
+  ()=>{},
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+const App = ({ store, ...props }) => (
+  <Page {...{ props }} />
+)
+
+render(
+  <Provider store={ store } key="store">
+    <App store={store} />
+  </Provider>,
+  document.getElementById('app')
+)
