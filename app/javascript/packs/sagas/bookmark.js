@@ -1,9 +1,8 @@
 import { defineTypes } from '../utils/defineTypes'
 import http from '../utils/http'
-import { put, call, takeEvery, select } from 'redux-saga/effects'
+import { put, call, takeEvery } from 'redux-saga/effects'
 import { startSubmit, stopSubmit, reset } from 'redux-form'
 import { FORM_NAME } from '../forms/bookmark'
-
 
 export const bookmarkGetTypes = defineTypes('BOOKMARKS/GET')
 export const bookmarkCreateTypes = defineTypes('BOOKMARKS/CREATE')
@@ -59,15 +58,15 @@ export function * fetchBookmarksSaga () {
 
 export function * createBookmarkSaga ({ attributes }) {
   try {
-    yield(put(startSubmit(FORM_NAME)))
+    yield (put(startSubmit(FORM_NAME)))
 
-    const response = yield call(http.post, '/bookmarks', { bookmarks: attributes })
+    yield call(http.post, '/bookmarks', { bookmarks: attributes })
 
     yield put({ type: bookmarkCreateTypes.SUCCESS, attributes: {} })
     yield put(reset(FORM_NAME))
     yield call(fetchBookmarksSaga)
   } catch (error) {
-    yield(put(stopSubmit(FORM_NAME)))
+    yield (put(stopSubmit(FORM_NAME)))
     yield put({ type: bookmarkCreateTypes.FAILURE, error })
   }
 }

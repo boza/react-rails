@@ -2,7 +2,6 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Form from '../forms/bookmark'
-import http from '../utils/http'
 import {actions} from '../sagas/bookmark'
 
 const BookmarkCreate = ({ bookmarksActions }) => {
@@ -15,7 +14,7 @@ const BookmarkCreate = ({ bookmarksActions }) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  bookmarksActions: bindActionCreators(actions, dispatch),
+  bookmarksActions: bindActionCreators(actions, dispatch)
 })
 
 export default connect(null, mapDispatchToProps)(BookmarkCreate)

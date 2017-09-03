@@ -1,6 +1,6 @@
 import React from 'react'
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import {ListGroup, ListGroupItem, Badge} from 'reactstrap'
 import {actions, selectors} from '../sagas/bookmark'
 
@@ -12,7 +12,7 @@ class BookmarkList extends React.Component {
     this.removeBookmark = this.removeBookmark.bind(this)
   }
 
-  componentWillMount() {
+  componentWillMount () {
     this.props.bookmarksActions.fetch()
   }
 
@@ -52,10 +52,10 @@ class BookmarkList extends React.Component {
 
 const mapStateToProps = (state) => ({
   bookmarks: selectors.getBookmarks(state)
-});
+})
 
 const mapDispatchToProps = (dispatch) => ({
-  bookmarksActions: bindActionCreators(actions, dispatch),
+  bookmarksActions: bindActionCreators(actions, dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookmarkList)
