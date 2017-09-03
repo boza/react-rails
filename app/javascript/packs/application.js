@@ -14,13 +14,8 @@ import { Provider } from 'react-redux'
 
 import Page from './components/page'
 
-import { createStore, combineReducers } from 'redux'
-
-import { reducer as formReducer } from 'redux-form'
-
-const rootReducer = combineReducers({
-  form: formReducer
-})
+import { createStore } from 'redux'
+import rootReducer from './reducers'
 
 const store = createStore(
   rootReducer,

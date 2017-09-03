@@ -3,8 +3,14 @@ import { connect } from 'react-redux'
 import { Jumbotron, Button } from 'reactstrap'
 import Bookmarks from './bookmarks'
 
-const goToLogin = () => {
+const goToLogin = (event) => {
+  event.preventDefault
   window.location = '/sign_in'
+}
+
+const signOut = (event) => {
+  event.preventDefault
+  window.location = '/logout'
 }
 
 const Page = ({ props }) => {
@@ -14,7 +20,7 @@ const Page = ({ props }) => {
       <Jumbotron>
         <h1 className='display-3'>Hello, world!</h1>
         <p className='lead'>This is a example application with Rails 5.1, react, redux, bootstrap</p>
-        { isLoggedIn && <Button onClick={() => { window.location = '/logout' }}>Sign Out</Button> }
+        { isLoggedIn && <Button onClick={signOut}>Sign Out</Button> }
         <hr className='my-2' />
         {
           !isLoggedIn && <p className='lead'>
