@@ -29,7 +29,7 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    Bookmark.find(params[:id]).destroy!
+    current_user.bookmarks.find(params[:id]).destroy!
     head :ok
   end
 
