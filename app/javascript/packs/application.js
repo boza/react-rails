@@ -6,13 +6,13 @@
 //
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css'
 
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
 
-import Page from './components/page';
+import Page from './components/page'
 
 import { createStore, combineReducers } from 'redux'
 
@@ -31,11 +31,11 @@ const App = ({ store, ...props }) => (
   <Page {...{ props }} />
 )
 
-const container = document.getElementById('app');
+const container = document.getElementById('app')
 const isLoggedIn = container && container.getAttribute('data-is-logged-in') === 'true'
 if (container) {
   render(
-    <Provider store={ store } key="store">
+    <Provider store={store} key='store'>
       <App store={store} isLoggedIn={isLoggedIn} />
     </Provider>,
     container

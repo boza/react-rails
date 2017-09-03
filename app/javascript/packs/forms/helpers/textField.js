@@ -1,14 +1,14 @@
 import React from 'react'
-import { Label, Input, FormFeedback, FormGroup } from 'reactstrap';
+import { Label, Input, FormFeedback, FormGroup } from 'reactstrap'
 
 const Field = ({ input, label, placeholder, className, type, meta: { touched, error } }) => {
-  const errorClass = (touched && error && "danger") || null
+  const errorClass = (touched && error && 'danger') || null
   return (
-    <FormGroup color={ errorClass }>
+    <FormGroup color={errorClass}>
       <div className={className}>
         <Label className='form__label'>
           { label }
-          <Input {...input} placeholder={placeholder} type={type} state={ errorClass } />
+          <Input {...input} placeholder={placeholder} type={type} state={errorClass} />
           { touched && error && <FormFeedback>{ error }</FormFeedback> }
         </Label>
       </div>

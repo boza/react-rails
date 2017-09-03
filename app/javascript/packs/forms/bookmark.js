@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm, getFormSyncErrors, getFormSubmitErrors } from 'redux-form'
 
-import { Button } from 'reactstrap';
+import { Button } from 'reactstrap'
 
 import TextField from './helpers/textField'
 
@@ -11,20 +11,20 @@ export const FORM_NAME = 'bookmarkForm'
 const validate = (values) => {
   let errors = {}
   if (!values.title) {
-    errors.title = "Please enter a title"
+    errors.title = 'Please enter a title'
   }
   if (!values.url) {
-    errors.url = "Please enter an url"
+    errors.url = 'Please enter an url'
   }
   if (values.url && !/^http(s)?:\/\//.test(values.url)) {
-    errors.url = "Make sure the url start with http or https"
+    errors.url = 'Make sure the url start with http or https'
   }
   return errors
 }
 
 class Formx extends Component {
   render () {
-    const { handleSubmit, submitSucceeded } = this.props
+    const { handleSubmit } = this.props
 
     return (
       <form onSubmit={handleSubmit}>
@@ -43,7 +43,7 @@ class Formx extends Component {
           component={TextField}
           placeholder='short url'
         />
-        <Button className='submit'>Next</Button>
+        <Button className='submit'>Save</Button>
       </form>
     )
   }

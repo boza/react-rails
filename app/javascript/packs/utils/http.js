@@ -30,6 +30,9 @@ const request = (type, url, data = {}) => {
 }
 
 export default {
+  delete: (url, data = {}) => {
+    return request('DELETE', url, data)
+  },
   post: (url, data = {}) => {
     return request('POST', url, data)
   },
