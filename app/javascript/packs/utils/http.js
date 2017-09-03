@@ -31,7 +31,11 @@ const request = (type, url, data = {}) => {
 
 export default {
   delete: (url, data = {}) => {
-    return request('DELETE', url, data)
+    return fetch(`${endpoint}${url}`, {
+      method: 'DELETE',
+      headers: defaultHeaders,
+      credentials: 'include'
+    })
   },
   post: (url, data = {}) => {
     return request('POST', url, data)
@@ -42,10 +46,11 @@ export default {
   get: (url, data = {}) => {
     return fetch(`${endpoint}${url}`, {
       method: 'GET',
-      headers: defaultHeaders
+      headers: defaultHeaders,
+      credentials: 'include'
     }).then(function (response) {
       if (response.ok) {
-        return response.json().then(json => json.data)
+        return response.json().then(json => json)
       } else {
         return response.json().then(e => { throw e })
       }

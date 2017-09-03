@@ -14,13 +14,28 @@ import { Provider } from 'react-redux'
 
 import Page from './components/page'
 
-import { createStore } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import rootReducer from './reducers'
+import sagas from './sagas'
+
+import createSagaMiddleware from 'redux-saga'
+
+const initialState = {}
+
+const sagaMiddleware = createSagaMiddleware()
+
+const middlewares = compose(
+  applyMiddleware(sagaMiddleware),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 const store = createStore(
   rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  initialState,
+  middlewares
 )
+
+sagaMiddleware.run(sagas)
 
 const App = ({ store, ...props }) => (
   <Page {...{ props }} />

@@ -3,7 +3,7 @@ class BookmarksController < ApplicationController
 
   def index
     respond_to do |format|
-      format.json { render json: current_user.bookmarks }
+      format.json { render json: current_user.bookmarks.order('id DESC') }
     end
   end
 
@@ -26,6 +26,11 @@ class BookmarksController < ApplicationController
     respond_to do |format|
       format.json { render json: @bookmark }
     end
+  end
+
+  def destroy
+    Bookmark.find(params[:id]).destroy!
+    head :ok
   end
 
   private

@@ -1,25 +1,21 @@
 import React from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Form, { FORM_NAME } from '../forms/bookmark'
-import { startSubmit, stopSubmit, reset } from 'redux-form'
+import Form from '../forms/bookmark'
 import http from '../utils/http'
+import {actions} from '../sagas/bookmark'
 
-// Move this to redux saga
-const handleSubmit = (dispatch) =>
-  (attributes) => {
-    dispatch(startSubmit(FORM_NAME))
-    const params = { bookmarks: { ...attributes } }
-    http.post('/bookmarks', params)
-    .then(dispatch(reset(FORM_NAME)))
-    .catch(() => stopSubmit(FORM_NAME))
-  }
-
-const BookmarkCreate = ({ dispatch }) => {
+const BookmarkCreate = ({ bookmarksActions }) => {
   return (
     <div>
-      <Form onSubmit={handleSubmit(dispatch)} />
+      <h3>Create a bookmark</h3>
+      <Form onSubmit={bookmarksActions.create} />
     </div>
   )
 }
 
-export default connect()(BookmarkCreate)
+const mapDispatchToProps = (dispatch) => ({
+  bookmarksActions: bindActionCreators(actions, dispatch),
+})
+
+export default connect(null, mapDispatchToProps)(BookmarkCreate)

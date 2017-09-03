@@ -1,16 +1,26 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {ListGroup, ListGroupItem, Badge} from 'reactstrap'
+import {actions, selectors} from '../sagas/bookmark'
 
 class BookmarkList extends React.Component {
   constructor (props) {
     super(props)
 
     this.renderBookmarks = this.renderBookmarks.bind(this)
-    this.renderBookmarks = this.renderBookmarks.bind(this)
+    this.removeBookmark = this.removeBookmark.bind(this)
+  }
+
+  componentWillMount() {
+    this.props.bookmarksActions.fetch()
   }
 
   removeBookmark (id) {
-    return () => console.log(id)
+    return (event) => {
+      event.preventDefault()
+      this.props.bookmarksActions.delete(id)
+    }
   }
 
   renderBookmarks (bookmarks) {
@@ -19,6 +29,7 @@ class BookmarkList extends React.Component {
         className='justify-content-between'
         key={bookmark.id}
         tag='a'
+        target='_blank'
         href={bookmark.url}
       >
         {bookmark.title}
@@ -39,4 +50,12 @@ class BookmarkList extends React.Component {
   }
 }
 
-export default BookmarkList
+const mapStateToProps = (state) => ({
+  bookmarks: selectors.getBookmarks(state)
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  bookmarksActions: bindActionCreators(actions, dispatch),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookmarkList)

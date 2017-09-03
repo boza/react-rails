@@ -4,12 +4,10 @@ import { Jumbotron, Button } from 'reactstrap'
 import Bookmarks from './bookmarks'
 
 const goToLogin = (event) => {
-  event.preventDefault
   window.location = '/sign_in'
 }
 
 const signOut = (event) => {
-  event.preventDefault
   window.location = '/logout'
 }
 
