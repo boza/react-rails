@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+
+# Apache gets grumpy about PID files pre-existing
+rm -f /app/code/tmp/pids/server.pid
+
+exec bin/rails s -p 3000 -b '0.0.0.0'
