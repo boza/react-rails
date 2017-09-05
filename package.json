@@ -7,6 +7,9 @@
       "app/assets/javascripts"
     ]
   },
+  "jest": {
+    "roots": ["app/javascript/packs"]
+  },
   "dependencies": {
     "autoprefixer": "^7.1.3",
     "babel-core": "^6.26.0",
