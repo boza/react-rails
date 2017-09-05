@@ -11,13 +11,13 @@
         "useBuiltIns": true
       }
     ],
-    "stage-0",
     ["es2015", {"modules": false}],
+    "stage-0",
     "react"
   ],
   "plugins": [
-    "syntax-dynamic-import",
     ["transform-runtime", {
+      "helpers": false,
       "polyfill": false,
       "regenerator": true
     }],
@@ -27,11 +27,19 @@
       {
         "spec": true
       }
-    ]
+    ],
+    "syntax-dynamic-import"
   ],
   "env": {
     "test": {
-      "plugins": ["transform-es2015-modules-commonjs"]
+      "presets": [["es2015"], "stage-0", "react"],
+      "plugins": ["transform-es2015-modules-commonjs",
+        ["transform-runtime", {
+          "helpers": false,
+          "polyfill": false,
+          "regenerator": true
+        }]
+      ]
     }
   }
 }

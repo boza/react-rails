@@ -4,7 +4,7 @@ import BookmarkCreate from './bookmarkCreate'
 import BookmarkList from './bookmarkList'
 import { Container, Row, Col } from 'reactstrap'
 
-const Bookmarks = (props) => (
+const Bookmarks = () => (
   <Container>
     <Row>
       <Col><BookmarkCreate /></Col>

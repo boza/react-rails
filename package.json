@@ -8,13 +8,9 @@
     ]
   },
   "jest": {
-    "moduleDirectories": [
-      "node_modules",
-      "<rootDir>/app/javascript/packs"
-    ],
-    "roots": [
-      "<rootDir>/test/javascript"
-    ]
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   },
   "dependencies": {
     "autoprefixer": "^7.1.3",

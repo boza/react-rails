@@ -12,8 +12,7 @@ export const signOut = (event) => {
   window.location = '/logout'
 }
 
-const Page = ({ props }) => {
-  const { isLoggedIn } = props
+export const Page = ({ isLoggedIn, ...props }) => {
   return (
     <div>
       <Jumbotron>
@@ -26,7 +25,7 @@ const Page = ({ props }) => {
             <Button onClick={goToLogin} color='primary'>Sign In</Button>
           </p>
         }
-        { isLoggedIn && <Bookmarks {...{ props }} /> }
+        { isLoggedIn && <Bookmarks {...props} /> }
       </Jumbotron>
     </div>
   )

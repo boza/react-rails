@@ -40,11 +40,12 @@ const store = createStore(
 sagaMiddleware.run(sagas)
 
 const App = ({ store, ...props }) => (
-  <Page {...{ props }} />
+  <Page {...props} />
 )
 
 const container = document.getElementById('app')
 const isLoggedIn = container && container.getAttribute('data-is-logged-in') === 'true'
+
 if (container) {
   render(
     <Provider store={store} key='store'>
