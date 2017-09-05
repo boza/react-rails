@@ -16,11 +16,6 @@
     "react"
   ],
   "plugins": [
-    ["transform-runtime", {
-      "helpers": false,
-      "polyfill": false,
-      "regenerator": true
-    }],
     "transform-object-rest-spread",
     [
       "transform-class-properties",
@@ -31,15 +26,18 @@
     "syntax-dynamic-import"
   ],
   "env": {
-    "test": {
-      "presets": [["es2015"], "stage-0", "react"],
-      "plugins": ["transform-es2015-modules-commonjs",
+    "development": {
+      plugins: [
         ["transform-runtime", {
           "helpers": false,
           "polyfill": false,
           "regenerator": true
         }]
       ]
+    },
+    "test": {
+      "presets": [["es2015"], "stage-0", "react"],
+      "plugins": ["transform-es2015-modules-commonjs"]
     }
   }
 }

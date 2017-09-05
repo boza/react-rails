@@ -1,10 +1,10 @@
-jest.dontMock('../../components/page')
+jest.dontMock('components/page')
 
 import React from 'react'
 import { shallow } from 'enzyme'
 import { Button } from 'reactstrap'
 
-import { Page, goToLogin, signOut } from '../../components/page'
+import { Page, goToLogin, signOut } from 'components/page'
 
 const wrapper = shallow(<Page />);
 
