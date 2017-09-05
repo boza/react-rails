@@ -51,7 +51,7 @@ class BookmarkList extends React.Component {
   }
 }
 
-Page.propTypes = {
+BookmarkList.propTypes = {
   bookmarks: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,

@@ -12,7 +12,8 @@ const signOut = (event) => {
   window.location = '/logout'
 }
 
-const Page = ({ isLoggedIn, ...props }) => {
+const Page = ({ props }) => {
+  const { isLoggedIn } = props
   return (
     <div>
       <Jumbotron>
@@ -32,7 +33,7 @@ const Page = ({ isLoggedIn, ...props }) => {
 }
 
 Page.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool
 }
 
 export default connect()(Page)

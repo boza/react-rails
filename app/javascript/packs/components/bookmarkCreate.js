@@ -14,7 +14,7 @@ const BookmarkCreate = ({ bookmarksActions }) => {
   )
 }
 
-Page.propTypes = {
+BookmarkCreate.propTypes = {
   bookmarksActions: PropTypes.shape({
     create: PropTypes.func.isRequired
   })
