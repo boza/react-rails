@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 import { Jumbotron, Button } from 'reactstrap'
 import Bookmarks from './bookmarks'
 
-const goToLogin = (event) => {
+export const goToLogin = (event) => {
   window.location = '/sign_in'
 }
 
-const signOut = (event) => {
+export const signOut = (event) => {
   window.location = '/logout'
 }
 

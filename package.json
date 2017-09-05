@@ -8,7 +8,10 @@
     ]
   },
   "jest": {
-    "roots": ["app/javascript/packs"]
+    "moduleDirectories": ["node_modules", "<rootDir>/app/javascript/packs"],
+    "roots": [
+      "<rootDir>/test/javascript"
+    ]
   },
   "dependencies": {
     "autoprefixer": "^7.1.3",
@@ -20,7 +23,9 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
     "bootstrap": "4.0.0-alpha.6",
     "coffee-loader": "^0.8.0",
@@ -46,6 +51,7 @@
     "react-addons-transition-group": "^15.6.0",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
+    "react-test-renderer": "^15.6.1",
     "reactstrap": "^4.8.0",
     "redux": "^3.7.2",
     "redux-form": "^7.0.3",

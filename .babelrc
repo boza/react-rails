@@ -11,6 +11,8 @@
         "useBuiltIns": true
       }
     ],
+    "stage-0",
+    ["es2015", {"modules": false}],
     "react"
   ],
   "plugins": [
@@ -26,5 +28,10 @@
         "spec": true
       }
     ]
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
+  }
 }
