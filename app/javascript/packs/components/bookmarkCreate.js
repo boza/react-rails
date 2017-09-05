@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Form from '../forms/bookmark'
@@ -11,6 +12,12 @@ const BookmarkCreate = ({ bookmarksActions }) => {
       <Form onSubmit={bookmarksActions.create} />
     </div>
   )
+}
+
+BookmarkCreate.propTypes = {
+  bookmarksActions: PropTypes.shape({
+    create: PropTypes.func.isRequired
+  })
 }
 
 const mapDispatchToProps = (dispatch) => ({

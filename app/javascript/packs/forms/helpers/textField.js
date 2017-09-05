@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import { Label, Input, FormFeedback, FormGroup } from 'reactstrap'
 
 const Field = ({ input, label, placeholder, className, type, meta: { touched, error } }) => {
@@ -17,12 +18,15 @@ const Field = ({ input, label, placeholder, className, type, meta: { touched, er
 }
 
 Field.propTypes = {
-  className: React.PropTypes.string,
-  label: React.PropTypes.string,
-  meta: React.PropTypes.shape({
-    error: React.PropTypes.string,
-    touched: React.PropTypes.bool.isRequired,
-    submitFailed: React.PropTypes.bool.isRequired
+  input: PropTypes.any,
+  type: PropTypes.string,
+  className: PropTypes.string,
+  placeholder: PropTypes.string,
+  label: PropTypes.string,
+  meta: PropTypes.shape({
+    error: PropTypes.string,
+    touched: PropTypes.bool.isRequired,
+    submitFailed: PropTypes.bool.isRequired
   }).isRequired
 }
 

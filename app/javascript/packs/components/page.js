@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { Jumbotron, Button } from 'reactstrap'
 import Bookmarks from './bookmarks'
@@ -29,6 +30,10 @@ const Page = ({ props }) => {
       </Jumbotron>
     </div>
   )
+}
+
+Page.propTypes = {
+  isLoggedIn: PropTypes.bool
 }
 
 export default connect()(Page)
