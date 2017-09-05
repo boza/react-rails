@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { Field, reduxForm, getFormSyncErrors, getFormSubmitErrors } from 'redux-form'
 
@@ -22,7 +23,7 @@ const validate = (values) => {
   return errors
 }
 
-class Formx extends Component {
+class Form extends Component {
   render () {
     const { handleSubmit } = this.props
 
@@ -52,7 +53,13 @@ class Formx extends Component {
 export const bookmarkForm = reduxForm({
   form: FORM_NAME,
   validate
-})(Formx)
+})(Form)
+
+Form.propTypes = {
+  submitErrors: PropTypes.shape({}),
+  errors: PropTypes.shape({}),
+  handleSubmit: PropTypes.func.isRequired,
+};
 
 export default connect(state => ({
   errors: getFormSyncErrors(FORM_NAME)(state),

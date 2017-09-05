@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import {ListGroup, ListGroupItem, Badge} from 'reactstrap'
@@ -43,12 +44,25 @@ class BookmarkList extends React.Component {
       <div>
         <h3>Bookmarks </h3>
         <ListGroup>
-          { this.renderBookmarks(this.props.bookmarks || [{id: 1, title: 'Sample', url: '#'}]) }
+          { this.renderBookmarks(this.props.bookmarks) }
         </ListGroup>
       </div>
     )
   }
 }
+
+Page.propTypes = {
+  bookmarks: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    url: PropTypes.string
+  })),
+  bookmarksActions: PropTypes.shape({
+    delete: PropTypes.func.isRequired,
+    fetch: PropTypes.func.isRequired
+  })
+}
+
 
 const mapStateToProps = (state) => ({
   bookmarks: selectors.getBookmarks(state)
