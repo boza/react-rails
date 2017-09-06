@@ -1,4 +1,4 @@
-# CODE CHALLENGE README
+# React/Rails App example
 
 ## Set up/Installation
 This tool uses Docker to bootstrap itself. If you don't have docker installed you can download it from here:
